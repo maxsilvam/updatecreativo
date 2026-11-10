@@ -118,3 +118,13 @@ form?.addEventListener('submit', (e) => {
   status.textContent = 'Solicitud enviada. Te responderé con una propuesta a la brevedad.';
   form.reset();
 });
+
+// Diagrama de roles: las casillas se marcan una vez, cuando el diagrama entra en pantalla.
+const roles = document.querySelector('.roles');
+if (roles) {
+  new IntersectionObserver((entries, obs) => {
+    if (!entries[0].isIntersecting) return;
+    roles.classList.add('is-live');
+    obs.disconnect();
+  }, { threshold: 0.35 }).observe(roles);
+}

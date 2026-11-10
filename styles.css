@@ -6,17 +6,17 @@
   --accent-2: #9D7BFF;        /* Solo para los degradados de placeholder */
   --accent-3: #FF4FD8;
   --on-accent: #05060A;
-  --bg: #161719;
-  --surface: #202125;
-  --surface-2: #2A2B30;
+  --bg: #07080D;
+  --surface: #0F121B;
+  --surface-2: #171B27;
   --line: rgba(255,255,255,0.16);
   --line-strong: rgba(255,255,255,0.32);
   --text: #F2F2F2;
   --muted: #A9ABB3;
   --subtle: #7D808A;
 
-  --font-display: "Unbounded", system-ui, sans-serif;
-  --font-body: "Inter", system-ui, sans-serif;
+  --font-display: "Onest", system-ui, sans-serif;
+  --font-body: "Onest", system-ui, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, monospace;
 
   --container: 1600px;
@@ -66,7 +66,7 @@ img, video { max-width: 100%; display: block; }
 .pill-accent:hover, .pill-accent.is-active { border-color: var(--accent); box-shadow: 0 0 24px var(--accent); }
 .pill-accent.is-active { background: var(--accent); color: var(--on-accent); }
 .pill-lg { min-height: 48px; padding: 12px 24px; font-size: 16px; }
-.pill-xl { min-height: 64px; padding: 14px 32px; font-size: clamp(18px, 2.4vw, 28px); font-family: var(--font-display); font-weight: 300; }
+.pill-xl { min-height: 64px; padding: 14px 32px; font-size: clamp(18px, 2.4vw, 28px); font-family: var(--font-display); font-weight: 400; letter-spacing: -0.03em; }
 .pill-block { width: 100%; }
 
 .tags { display: flex; flex-wrap: wrap; gap: 6px; }
@@ -83,7 +83,7 @@ img, video { max-width: 100%; display: block; }
 /* ============ Header ============ */
 .site-header {
   position: sticky; top: 0; z-index: 10;
-  background: rgba(22,23,25,0.82);
+  background: rgba(7,8,13,0.82);
   backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
 }
 .nav {
@@ -95,7 +95,7 @@ img, video { max-width: 100%; display: block; }
 .logo-dots { display: flex; gap: 6px; }
 .logo-dots span { width: 14px; height: 14px; border-radius: 50%; background: var(--text); }
 .logo-dots span:last-child { background: var(--accent); box-shadow: 0 0 12px var(--accent); }
-.logo-text { font-family: var(--font-display); font-weight: 600; font-size: 13px; letter-spacing: 0.04em; }
+.logo-text { font-family: var(--font-display); font-weight: 600; font-size: 14px; letter-spacing: 0.02em; }
 .nav-links { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
 .nav-toggle { display: none; }
 
@@ -113,8 +113,8 @@ img, video { max-width: 100%; display: block; }
 /* ============ Hero ============ */
 .hero { padding-block: clamp(32px, 5vw, 64px) var(--section-pad); }
 .hero-title {
-  font-family: var(--font-display); font-weight: 300;
-  font-size: clamp(36px, 6.2vw, 96px); line-height: 1.08; letter-spacing: -0.035em;
+  font-family: var(--font-display); font-weight: 400;
+  font-size: clamp(36px, 6.2vw, 96px); line-height: 1.04; letter-spacing: -0.045em;
   max-width: 15ch;
 }
 .morph-wrap { position: relative; display: inline-block; }
@@ -126,19 +126,6 @@ img, video { max-width: 100%; display: block; }
   content: attr(data-glyph); position: absolute; left: 50%; top: 0; transform: translateX(-50%);
   color: var(--text); font-family: var(--font-mono); font-weight: 400;
 }
-.squiggle {
-  position: absolute; left: 0; right: 0; bottom: -0.12em; width: 100%; height: 0.28em;
-  overflow: visible; pointer-events: none;
-  /* Se revela con clip-path y no con stroke-dasharray: combinado con el trazo que no escala,
-     algunos navegadores dejaban la línea cortada */
-  clip-path: inset(-50% 100% -50% 0);
-  animation: draw 1.4s .9s cubic-bezier(.6,0,.2,1) forwards;
-}
-.squiggle path {
-  fill: none; stroke: var(--accent); stroke-width: 3; stroke-linecap: round;
-  vector-effect: non-scaling-stroke;
-}
-@keyframes draw { to { clip-path: inset(-50% -2% -50% -2%); } }
 
 /* Tira de imágenes: una grande y cuatro angostas que se expanden al pasar el mouse */
 .hero-strip {
@@ -194,8 +181,8 @@ img, video { max-width: 100%; display: block; }
 }
 .section-head .muted { max-width: 460px; }
 .section-title {
-  font-family: var(--font-display); font-weight: 300;
-  font-size: clamp(30px, 4vw, 56px); line-height: 1.1; letter-spacing: -0.03em;
+  font-family: var(--font-display); font-weight: 400;
+  font-size: clamp(30px, 4vw, 56px); line-height: 1.08; letter-spacing: -0.04em;
   max-width: 20ch;
 }
 
@@ -238,30 +225,31 @@ img, video { max-width: 100%; display: block; }
 
 /* ============ Sobre mí ============ */
 .about { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 380px), 1fr)); gap: clamp(28px, 4vw, 64px); align-items: center; }
-.about-photo { aspect-ratio: 4 / 5; width: 100%; max-height: 720px; object-fit: cover; border-radius: var(--radius); }
+.about-photo { aspect-ratio: 4 / 5; width: 100%; height: auto; max-height: 720px; object-fit: cover; border-radius: var(--radius); }
 .about-copy { display: flex; flex-direction: column; gap: 20px; }
 .about-copy p { color: var(--muted); font-size: clamp(16px, 1.4vw, 19px); max-width: 56ch; }
-/* Nota escrita a mano sobre la foto: se "escribe" de izquierda a derecha al entrar en pantalla */
+/* Nota escrita a mano sobre la foto: se "escribe" de izquierda a derecha al entrar en pantalla.
+   Va en el espacio blanco sobre la cabeza, con tinta oscura (el cian no se lee sobre fondo blanco). */
 .about-figure { position: relative; margin: 0; }
 .handnote {
-  position: absolute; left: 8%; right: 6%; bottom: 7%;
+  --ink: #12162A;
+  position: absolute; left: 7%; right: 6%; top: 5%;
   font-family: "Caveat", cursive; font-weight: 600;
-  font-size: clamp(28px, 3.2vw, 44px); line-height: 1.05;
-  color: var(--accent); transform: rotate(-4deg); transform-origin: left bottom;
-  text-shadow: 0 2px 12px rgba(0,0,0,0.55);
+  font-size: clamp(26px, 3vw, 42px); line-height: 1.05;
+  color: var(--ink); transform: rotate(-3deg); transform-origin: left top;
 }
 .handnote-arrow {
-  position: absolute; left: 62%; bottom: 100%; width: clamp(44px, 4.5vw, 64px);
-  overflow: visible; transform: rotate(8deg);
+  position: absolute; left: 52%; top: 100%; width: clamp(40px, 4vw, 58px);
+  overflow: visible; transform: rotate(-6deg);
 }
 .handnote-arrow path {
-  fill: none; stroke: var(--accent); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round;
+  fill: none; stroke: var(--ink); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round;
   stroke-dasharray: 1; stroke-dashoffset: 0;
 }
-.js .handnote { clip-path: inset(-20% 100% -20% 0); transition: clip-path 1.6s cubic-bezier(.5,0,.3,1); }
+.js .handnote { clip-path: inset(-20% 100% -120% 0); transition: clip-path 1.6s cubic-bezier(.5,0,.3,1); }
 .js .handnote-arrow path { stroke-dashoffset: 1; transition: stroke-dashoffset .5s ease-out 1.5s; }
 .js .handnote-arrow path + path { transition-delay: 1.9s; }
-.js .handnote.is-written { clip-path: inset(-60% -10% -20% 0); }
+.js .handnote.is-written { clip-path: inset(-20% -10% -120% 0); }
 .js .handnote.is-written .handnote-arrow path { stroke-dashoffset: 0; }
 .tags-static .tag { background: none; font-size: 12px; padding: 6px 12px; }
 
@@ -313,8 +301,125 @@ img, video { max-width: 100%; display: block; }
 /* ============ Accesibilidad ============ */
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .squiggle { animation: none; clip-path: none; }
   .hero-strip .media, .media::before { transition: none; }
   .js .handnote { clip-path: none; transition: none; }
   .js .handnote-arrow path { stroke-dashoffset: 0; transition: none; }
+}
+
+/* ============ Equipo: diagrama de tarjetas por rol (solo v2_2) ============ */
+.roles {
+  position: relative; aspect-ratio: 1000 / 620; max-width: 1180px; margin: 0 auto;
+}
+.roles-lines { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.roles-orbit { fill: none; stroke: var(--line); stroke-width: 1; stroke-dasharray: 3 6; vector-effect: non-scaling-stroke; }
+.roles-link {
+  fill: none; stroke: var(--line-strong); stroke-width: 1.5; stroke-dasharray: 6 8;
+  vector-effect: non-scaling-stroke; transition: stroke .6s;
+}
+.roles.is-live .roles-link { stroke: var(--accent); animation: flow 1.4s linear infinite; }
+@keyframes flow { to { stroke-dashoffset: -28; } }
+
+.roles-core {
+  position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%) scale(var(--s, 1));
+  width: clamp(120px, 13vw, 160px); aspect-ratio: 1; border-radius: 50%;
+  background: var(--surface); border: 1px solid var(--accent);
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px;
+  text-align: center; z-index: 1; cursor: default;
+  transition: transform .45s cubic-bezier(.2,.8,.2,1.2), box-shadow .45s ease, background .45s ease;
+}
+/* Al pasar el mouse: el núcleo crece y se enciende con el cian de la marca, y las líneas se intensifican */
+.roles-core:hover {
+  --s: 1.15;
+  background: color-mix(in srgb, var(--accent) 12%, var(--surface));
+  box-shadow:
+    0 0 0 6px color-mix(in srgb, var(--accent) 14%, transparent),
+    0 0 40px color-mix(in srgb, var(--accent) 55%, transparent),
+    0 0 90px color-mix(in srgb, var(--accent) 30%, transparent);
+}
+.roles:has(.roles-core:hover) .roles-link { stroke: var(--accent); stroke-width: 2.5; }
+.roles-core-text { font-weight: 600; font-size: 12px; letter-spacing: 0.04em; line-height: 1.2; }
+
+.role {
+  position: absolute; z-index: 2; width: clamp(230px, 24%, 270px);
+  background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+  padding: 18px 18px 16px; display: flex; flex-direction: column; gap: 14px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.45);
+  animation: float 7s ease-in-out infinite;
+}
+.role-1 { left: 2%; top: 4%; --r: -3deg; }
+.role-2 { right: 2%; top: 8%; --r: 2.5deg; animation-delay: -2s; }
+.role-3 { left: 6%; bottom: 3%; --r: 2deg; animation-delay: -4s; }
+.role-4 { right: 4%; bottom: 6%; --r: -2deg; animation-delay: -6s; }
+@keyframes float {
+  0%, 100% { transform: rotate(var(--r)) translateY(0); }
+  50% { transform: rotate(var(--r)) translateY(-8px); }
+}
+
+.role-list { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 10px; font-size: 14px; }
+.role-list li {
+  position: relative; padding-left: 28px; color: var(--subtle);
+  transition: color .4s calc(var(--i) * .45s + var(--d, 0s));
+}
+/* Casilla: borde vacío que se rellena con el acento y muestra el check */
+.role-list li::before {
+  content: ""; position: absolute; left: 0; top: 2px; width: 17px; height: 17px; border-radius: 5px;
+  border: 1.5px solid var(--line-strong); background: transparent;
+  transition: background .3s calc(var(--i) * .45s + var(--d, 0s)), border-color .3s calc(var(--i) * .45s + var(--d, 0s));
+}
+.role-list li::after {
+  content: ""; position: absolute; left: 6px; top: 5px; width: 5px; height: 9px;
+  border: solid var(--on-accent); border-width: 0 2px 2px 0; transform: rotate(45deg) scale(0);
+  transition: transform .25s calc(var(--i) * .45s + var(--d, 0s) + .1s);
+}
+.roles.is-live .role-list li { color: var(--text); }
+.roles.is-live .role-list li::before { background: var(--accent); border-color: var(--accent); }
+.roles.is-live .role-list li::after { transform: rotate(45deg) scale(1); }
+
+/* Cada tarjeta arranca un poco después que la anterior */
+.role-2 { --d: .6s; } .role-3 { --d: 1.2s; } .role-4 { --d: 1.8s; }
+
+.role-bar { height: 3px; border-radius: 3px; background: var(--line); overflow: hidden; }
+.role-bar span {
+  display: block; height: 100%; width: 0; background: var(--accent);
+  transition: width 1.4s cubic-bezier(.4,0,.2,1) var(--d, 0s);
+}
+.roles.is-live .role-bar span { width: 100%; }
+
+/* Móvil y tablet: el diagrama se vuelve un árbol vertical.
+   El núcleo es una cápsula arriba; una línea baja por la izquierda y cada tarjeta cuelga de una rama.
+   Cada tarjeta dibuja su tramo de línea (::after) y su rama (::before), así el árbol no depende de alturas fijas. */
+@media (max-width: 900px) {
+  .roles { --spine: 20px; --gutter: 40px; --branch-y: 30px; aspect-ratio: auto; display: flex; flex-direction: column; gap: 16px; padding-left: var(--gutter); }
+  .roles-lines { display: none; }
+  .roles-core {
+    position: relative; left: auto; top: auto; align-self: flex-start; margin-left: calc(-1 * var(--gutter));
+    width: auto; aspect-ratio: auto; border-radius: 999px; flex-direction: row; gap: 12px;
+    padding: 10px 20px 10px 13px; transform: scale(var(--s, 1)); transform-origin: left center;
+  }
+  .roles-core-text br { display: none; }
+  .role { position: relative; left: auto; right: auto; top: auto; bottom: auto; width: auto; animation: none; transform: none; }
+  .role::before, .role::after {
+    content: ""; position: absolute; left: calc(var(--spine) - var(--gutter) - 1px);
+    background: var(--line-strong); transition: background .5s var(--d, 0s);
+  }
+  /* Tramo vertical: desde el espacio de arriba hasta el final de la tarjeta (la última corta en su rama) */
+  .role::after {
+    top: -16px; bottom: 0; width: 2px;
+    background: repeating-linear-gradient(to bottom, var(--line-strong) 0 6px, transparent 6px 12px);
+  }
+  .role:last-child::after { bottom: auto; height: calc(16px + var(--branch-y) + 2px); }
+  /* Rama horizontal hacia la tarjeta */
+  .role::before { top: var(--branch-y); width: calc(var(--gutter) - var(--spine) + 1px); height: 2px; }
+  .roles.is-live .role::before { background: var(--accent); }
+  .roles.is-live .role::after {
+    background: repeating-linear-gradient(to bottom, var(--accent) 0 6px, transparent 6px 12px);
+    animation: flow-y 0.9s linear infinite;
+  }
+  @keyframes flow-y { to { background-position: 0 12px; } }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .role, .roles.is-live .roles-link, .roles.is-live .role::after { animation: none; }
+  .role { transform: rotate(var(--r)); }
+  .role-list li, .role-list li::before, .role-list li::after, .role-bar span { transition: none; }
 }
